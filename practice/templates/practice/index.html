@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        .api-endpoint {
+            background-color: #ecf0f1;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        .method {
+            font-weight: bold;
+            color: #27ae60;
+            display: inline-block;
+            min-width: 70px;
+        }
+        .method.post {
+            color: #f39c12;
+        }
+        .method.put, .method.patch {
+            color: #e67e22;
+        }
+        .method.delete {
+            color: #e74c3c;
+        }
+        code {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .description {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #d5f4e6;
+            border-radius: 5px;
+        }
+        .note {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #fff3cd;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        
+        <div class="description">
+            <p><strong>{{ description }}</strong></p>
+            <p>This project is set up to practice MongoDB operations with Django using PyMongo.</p>
+        </div>
+
+        <div class="note">
+            <p><strong>⚠️ Note:</strong> Make sure MongoDB is installed and running on your system before using these APIs.</p>
+            <p>Configure the MongoDB connection in <code>mongoproject/settings.py</code> by uncommenting and updating the <code>MONGODB_SETTINGS</code>.</p>
+        </div>
+
+        <h2>Available API Endpoints</h2>
+
+        <div class="api-endpoint">
+            <span class="method">GET</span>
+            <code>/api/users/</code>
+            <p>List all users from the MongoDB collection.</p>
+        </div>
+
+        <div class="api-endpoint">
+            <span class="method post">POST</span>
+            <code>/api/users/create/</code>
+            <p>Create a new user. Send JSON data in request body.</p>
+            <p><strong>Example:</strong> <code>{"name": "John Doe", "email": "john@example.com", "age": 30}</code></p>
+        </div>
+
+        <div class="api-endpoint">
+            <span class="method">GET</span>
+            <code>/api/users/&lt;user_id&gt;/</code>
+            <p>Get a specific user by MongoDB ObjectId.</p>
+        </div>
+
+        <div class="api-endpoint">
+            <span class="method put">PUT/PATCH</span>
+            <code>/api/users/&lt;user_id&gt;/update/</code>
+            <p>Update a user. Send JSON data in request body with fields to update.</p>
+        </div>
+
+        <div class="api-endpoint">
+            <span class="method delete">DELETE</span>
+            <code>/api/users/&lt;user_id&gt;/delete/</code>
+            <p>Delete a user by MongoDB ObjectId.</p>
+        </div>
+
+        <h2>Getting Started</h2>
+        <ol>
+            <li>Install MongoDB on your system</li>
+            <li>Install Python dependencies: <code>pip install -r requirements.txt</code></li>
+            <li>Configure MongoDB settings in <code>mongoproject/settings.py</code></li>
+            <li>Run the development server: <code>python manage.py runserver</code></li>
+            <li>Use the API endpoints above to practice MongoDB operations</li>
+        </ol>
+
+        <h2>Testing with curl</h2>
+        <div class="api-endpoint">
+            <p><strong>Create a user:</strong></p>
+            <code style="display: block; white-space: pre-wrap;">curl -X POST http://localhost:8000/api/users/create/ \
+  -H "Content-Type: application/json" \
+  -d '{"name": "John Doe", "email": "john@example.com", "age": 30}'</code>
+        </div>
+
+        <div class="api-endpoint">
+            <p><strong>Get all users:</strong></p>
+            <code>curl http://localhost:8000/api/users/</code>
+        </div>
+    </div>
+</body>
+</html>
